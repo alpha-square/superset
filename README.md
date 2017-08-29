@@ -1,1 +1,1 @@
-puppet-profile_superset
+superset
