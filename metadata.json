@@ -1,12 +1,12 @@
 {
-  "name": "namespace-superset",
-  "version": "0.1.0",
-  "author": "your_name",
-  "summary": null,
+  "name": "roger-s3-superset",
+  "version": "0.0.1",
+  "author": "rescuder",
+  "summary": "This module provides the installation of apache superset",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "git@github.com:rescuder/superset.git",
+  "project_page": "https://github.com/rescuder/superset",
+  "issues_url": "https://github.com/rescuder/superset/issues",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 4.11.0"}
   ],
