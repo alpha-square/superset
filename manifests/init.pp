@@ -2,7 +2,7 @@ class superset (
 
   Boolean          $venv                            = false,
   Boolean          $systempkgs                      = true,
-  Array            $yumpkg                          = ['gcc-c++','libffi-devel','openssl-devel','openldap-devel','python26-devel','postgresql-devel'],
+  Array            $additional_pkg                  = ['gcc-c++','libffi-devel','openssl-devel','openldap-devel','python26-devel','postgresql-devel'],
   Array            $pippkg                          = ['cryptography','sqlalchemy-redshift','pyhive','Babel','superset','psycopg2'],
   Optional[String] $cors_options                    = '',
   Optional[String] $viz_type_blacklist              = '',
@@ -13,6 +13,7 @@ class superset (
   Optional[String] $blueprints                      = '',
   Optional[String] $jinja_context_addons            = '',
   Optional[String] $http_headers                    = '',
+  String           $config_py                       = '/usr/local/lib/python2.7/site-packages/superset/config.py',
   String           $version                         = 'system',
   String           $pip                             = 'present',
   String           $dev                             = 'present',
@@ -115,7 +116,7 @@ class superset (
     gunicorn   => $gunicorn ,
   } ->
 
-  package { $yumpkg:
+  package { $additional_pkg:
     ensure => installed,
   } ->
 
@@ -146,7 +147,7 @@ class superset (
     subscribe   => Package[$pippkg]
   } ->
 
-  file { '/usr/local/lib/python2.7/site-packages/superset/config.py':
+  file { $config_py:
     ensure  => file,
     mode    => '0644',
     content => template("${module_name}/config.py.erb"),
