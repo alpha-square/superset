@@ -32,7 +32,7 @@ class superset (
   String           $lastname                        = 'superset',
   String           $email                           = 'foo@foo.com',
   String           $dburi                           = 'sqlite:////home/data/superset.db',
-  String           $ldap                            = 'ldap://10.10.59.70:389',
+  String           $ldap                            = 'ldap://10.0.0.0:111',
   String           $auth_type                       = 'AUTH_LDAP',
   String           $stats_logger                    = 'DummyStatsLogger()',
   String           $superset_webserver_address      = '0.0.0.0',
