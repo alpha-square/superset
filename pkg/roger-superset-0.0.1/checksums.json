@@ -1,0 +1,14 @@
+{
+  "CHANGELOG.md": "72eb13b8ba2a98fda6a0a8c552e9db57",
+  "DEVELOPMENT.md": "ca07559fd9dcebadae17a9db3ad5c3ba",
+  "Gemfile": "c7d77c01ac3d9556ef90c0d73ed2f932",
+  "README.md": "970049b6e3c2ee815fa2a4fd08af96b0",
+  "Rakefile": "8188214f27311fa629ce13c109175086",
+  "Vagrantfile": "049c4cdb85e87cf89934d088b92fd3c9",
+  "manifests/init.pp": "ff356b45a61e0eb492aeba7e1dde90e2",
+  "metadata.json": "b31fe8b58f64bc47865475ed4e389f4f",
+  "spec/classes/superset_spec.rb": "f80f647bfde0db97b9641f04673c00a9",
+  "spec/shared_contexts.rb": "47f7b218e172bd9a615a10c50d4a0e2a",
+  "spec/spec_helper.rb": "90125c2e9f6ecb357af588b3f35ddeba",
+  "templates/config.py.erb": "b1136c06d0840dd686746333b058f74c"
+}
