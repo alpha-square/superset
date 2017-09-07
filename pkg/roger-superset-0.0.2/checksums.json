@@ -6,7 +6,7 @@
   "Rakefile": "8188214f27311fa629ce13c109175086",
   "Vagrantfile": "049c4cdb85e87cf89934d088b92fd3c9",
   "manifests/init.pp": "36d7832151c9aaee7537d0e1144512ef",
-  "metadata.json": "b31fe8b58f64bc47865475ed4e389f4f",
+  "metadata.json": "dd4779f11e5da48724e76f4b4c36e5d9",
   "spec/classes/superset_spec.rb": "f80f647bfde0db97b9641f04673c00a9",
   "spec/shared_contexts.rb": "47f7b218e172bd9a615a10c50d4a0e2a",
   "spec/spec_helper.rb": "90125c2e9f6ecb357af588b3f35ddeba",

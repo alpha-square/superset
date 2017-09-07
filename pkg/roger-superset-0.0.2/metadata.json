@@ -7,10 +7,17 @@
   "source": "git@github.com:rescuder/superset.git",
   "project_page": "https://github.com/rescuder/superset",
   "issues_url": "https://github.com/rescuder/superset/issues",
-  "tags": ["superset"],
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 4.11.0"},
+    {"name":"stankevich-python","version_requirement":">= 1.18.2"}
+  ],
+  "data_provider": null,
+  "tags": [
+    "superset"
+  ],
   "operatingsystem_support": [
     {
-      "operatingsystem":"Amazon",
+      "operatingsystem": "Amazon",
       "operatingsystemrelease": [
         "2014.03",
         "2014.09",
@@ -54,10 +61,5 @@
         "16.04"
       ]
     }
-  ],
-  "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 4.11.0"},
-    {"name":"stankevich-python","version_requirement":">= 1.18.2"}
-  ],
-  "data_provider": null
+  ]
 }
