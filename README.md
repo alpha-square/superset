@@ -133,3 +133,20 @@ superset::sqllab_timeout: 30
 superset::smtp_port: 25
 
 ```
+
+## systemd service
+
+```
+class { 'superset':
+  systemd_service => true,
+}
+```
+
+## execute superset on specifi user
+
+```
+class { 'superset':
+  owner        => 'superset',
+  group        => 'superset',
+}
+```
