@@ -142,7 +142,7 @@ class { 'superset':
 }
 ```
 
-## execute superset on specifi user
+## execute superset with specific user
 
 ```
 class { 'superset':
