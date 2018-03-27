@@ -2,6 +2,7 @@ class superset (
 
   Boolean          $venv                            = false,
   Boolean          $systempkgs                      = true,
+  Boolean          $systemd_service                 = false,
   Array            $additional_pkg                  = ['gcc-c++','libffi-devel','openssl-devel','openldap-devel','python26-devel','postgresql-devel'],
   Array            $pippkg                          = ['cryptography','sqlalchemy-redshift','pyhive','Babel','superset','psycopg2'],
   Optional[String] $cors_options                    = '',
@@ -144,20 +145,24 @@ class superset (
     command     => "fabmanager create-admin --app superset --username ${username} --password ${password} --firstname ${firstname} --lastname ${lastname} --email ${email}",
     refreshonly => true,
     path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-    subscribe   => Package[$pippkg]
+    subscribe   => Package[$pippkg],
+    user 	=> $owner,
+    group	=> $group,
   } ->
 
-  file { $config_py:
-    ensure  => file,
-    mode    => '0644',
-    content => template("${module_name}/config.py.erb"),
-  } ->
+#  file { $config_py:
+#    ensure  => file,
+#    mode    => '0644',
+#    content => template("${module_name}/config.py.erb"),
+#  } ->
 
   exec { 'initialize_database':
     command     => 'superset db upgrade',
     refreshonly => true,
     path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
     subscribe   => Exec['create_admin_supersert'],
+    user        => $owner,
+    group       => $group,
   } ->
 
   exec { 'create_roles':
@@ -165,6 +170,8 @@ class superset (
     refreshonly => true,
     path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
     subscribe   => Exec['initialize_database'],
+    user        => $owner,
+    group       => $group,
   } ->
 
   exec { 'start_web_server':
@@ -172,5 +179,26 @@ class superset (
     refreshonly => true,
     path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
     subscribe   => Exec['create_roles'],
+    user        => $owner,
+    group       => $group,
   }
+
+  if $systemd_service == true { # Create systemd superset.service
+    systemd::service { 'superset':
+      description => 'superset',
+      after       => 'network.target',
+      user        => $owner,
+      group       => $group,
+      execstart   => '/usr/local/bin/superset runserver',
+    }
+  }
+  else {
+    exec { 'start_web_server':
+      command     => 'superset runserver',
+      refreshonly => true,
+      path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
+      subscribe   => Exec['create_roles'],
+    }
+  }
+
 }
